@@ -3,7 +3,7 @@
 
 ## The following it's a list of its functions:
 
-<p>-About Notepad Doradas: Shows name of the author.
+<p><strong>-About Notepad Doradas:</strong> Shows name of the author.<br>
 <strong>-Change Background Colour:</strong> Changes the colour of the notepad background.<br>
 <strong>-Change Text Colour:</strong> Changes the colour of the selected text.<br>
 <strong>-Change Text Font:</strong> Changes the font of all notepad's text. With this function, you may change size, style, and type of the font.<br>
