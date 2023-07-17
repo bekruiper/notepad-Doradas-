@@ -24,4 +24,3 @@
 <strong>-Time/Date:</strong> Inserts the current date and time on the notepad.<br>
 <strong>-Undo:</strong> Undoes an inmediate action.<br>
 <strong>-Word Wrap:</strong> Sets wrap/unwrap on the notepad.</p>
-<br>At the end of the code there's a TODO list for future versions.
