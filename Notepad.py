@@ -202,10 +202,10 @@ class NotepadApp(tk.Tk):
         self.title("Untitled File")
 
         def cmd_about(self):
-        """Menu, Sub-Menu: Help, Function: About"""
-        name = "Bekruiper"
-        name = name.center(20)
-        messagebox.showinfo(f"About {notepad_name}", f"Notepad by\n{name}")
+            """Menu, Sub-Menu: Help, Function: About"""
+            name = "Bekruiper"
+            name = name.center(20)
+            messagebox.showinfo(f"About {notepad_name}", f"Notepad by\n{name}")
 
     def cmd_alt_codes(self):
         """Menu, Sub-Menu: Help, Function: Show Alt-Codes"""
@@ -315,7 +315,7 @@ class NotepadApp(tk.Tk):
                 self.title(file_path)
 
         def cmd_new_file(self):
-        """Menu, Sub-Menu: File, Function: New File"""
+            """Menu, Sub-Menu: File, Function: New File"""
         if len(self.notepad.get('1.0', tk.END+'-1c')) > 0:
             if messagebox.askyesno("Notepad", "Do you want to save changes?"):
                 self.cmd_save_as()
@@ -344,39 +344,40 @@ class NotepadApp(tk.Tk):
                 file.write(self.notepad.get('1.0', tk.END))
 
     def cmd_find(self):
-    """Menu, Sub-Menu: Edit, Function: Find"""
-    self.find_window = tk.Toplevel(self)
-    self.find_window.title("Find")
-    self.find_window.transient(self)
-    
-    find_label = tk.Label(self.find_window, text="Find:")
-    find_label.grid(row=0, column=0, padx=5, pady=5, sticky="e")
-    
-    self.find_entry = tk.Entry(self.find_window, width=30)
-    self.find_entry.grid(row=0, column=1, padx=5, pady=5)
-    
-    find_button = tk.Button(self.find_window, text="Find Next", command=self.find_next)
-    find_button.grid(row=0, column=2, padx=5, pady=5)
-    
-    self.find_entry.focus_set()
+        """Menu, Sub-Menu: Edit, Function: Find"""
+        self.find_window = tk.Toplevel(self)
+        self.find_window.title("Find")
+        self.find_window.transient(self)
+        
+        find_label = tk.Label(self.find_window, text="Find:")
+        find_label.grid(row=0, column=0, padx=5, pady=5, sticky="e")
+        
+        self.find_entry = tk.Entry(self.find_window, width=30)
+        self.find_entry.grid(row=0, column=1, padx=5, pady=5)
+        
+        find_button = tk.Button(self.find_window, text="Find Next", command=self.find_next)
+        find_button.grid(row=0, column=2, padx=5, pady=5)
+        
+        self.find_entry.focus_set()
 
     def find_next(self):
-    """Find the next occurrence of the search text"""
-    search_text = self.find_entry.get()
-    if search_text:
-        start_pos = self.notepad.search(search_text, tk.INSERT, stopindex=tk.END)
-        if start_pos:
-            end_pos = f"{start_pos}+{len(search_text)}c"
-            self.notepad.tag_remove(tk.SEL, "1.0", tk.END)
-            self.notepad.tag_add(tk.SEL, start_pos, end_pos)
-            self.notepad.mark_set(tk.INSERT, end_pos)
-            self.notepad.see(tk.INSERT)
-            return 'break'
-        return None
+        """Find the next occurrence of the search text"""
+        search_text = self.find_entry.get()
+        if search_text:
+            start_pos = self.notepad.search(search_text, tk.INSERT, stopindex=tk.END)
+            if start_pos:
+                end_pos = f"{start_pos}+{len(search_text)}c"
+                self.notepad.tag_remove(tk.SEL, "1.0", tk.END)
+                self.notepad.tag_add(tk.SEL, start_pos, end_pos)
+                self.notepad.mark_set(tk.INSERT, end_pos)
+                self.notepad.see(tk.INSERT)
+                return 'break'
+            return None
+
 
     def cmd_print(self):
-    """Menu, Sub-Menu: File, Function: Print"""
-    print_text = self.notepad.get("1.0", tk.END)
+        """Menu, Sub-Menu: File, Function: Print"""
+        print_text = self.notepad.get("1.0", tk.END)
     
     # Perform printing operation here using the print_text
     
@@ -384,22 +385,22 @@ class NotepadApp(tk.Tk):
     print("Printing the text:\n", print_text)
 
     def cmd_text_alignment(self, alignment):
-    """Menu, Sub-Menu: Format, Function: Text Alignment"""
-    if alignment == "left":
-        self.notepad.tag_configure("align_left", justify=tk.LEFT)
-        self.notepad.tag_remove("align_center", "1.0", tk.END)
-        self.notepad.tag_remove("align_right", "1.0", tk.END)
-        self.notepad.tag_add("align_left", "1.0", tk.END)
-    elif alignment == "center":
-        self.notepad.tag_configure("align_center", justify=tk.CENTER)
-        self.notepad.tag_remove("align_left", "1.0", tk.END)
-        self.notepad.tag_remove("align_right", "1.0", tk.END)
-        self.notepad.tag_add("align_center", "1.0", tk.END)
-    elif alignment == "right":
-        self.notepad.tag_configure("align_right", justify=tk.RIGHT)
-        self.notepad.tag_remove("align_left", "1.0", tk.END)
-        self.notepad.tag_remove("align_center", "1.0", tk.END)
-        self.notepad.tag_add("align_right", "1.0", tk.END)
+        """Menu, Sub-Menu: Format, Function: Text Alignment"""
+        if alignment == "left":
+            self.notepad.tag_configure("align_left", justify=tk.LEFT)
+            self.notepad.tag_remove("align_center", "1.0", tk.END)
+            self.notepad.tag_remove("align_right", "1.0", tk.END)
+            self.notepad.tag_add("align_left", "1.0", tk.END)
+        elif alignment == "center":
+            self.notepad.tag_configure("align_center", justify=tk.CENTER)
+            self.notepad.tag_remove("align_left", "1.0", tk.END)
+            self.notepad.tag_remove("align_right", "1.0", tk.END)
+            self.notepad.tag_add("align_center", "1.0", tk.END)
+        elif alignment == "right":
+            self.notepad.tag_configure("align_right", justify=tk.RIGHT)
+            self.notepad.tag_remove("align_left", "1.0", tk.END)
+            self.notepad.tag_remove("align_center", "1.0", tk.END)
+            self.notepad.tag_add("align_right", "1.0", tk.END)
 
 
 
